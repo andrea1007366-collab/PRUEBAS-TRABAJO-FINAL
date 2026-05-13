@@ -14,4 +14,8 @@ def driver():
 def pytest_exception_interact(node, call, report):
     driver = node.funcargs.get("driver", None)
     if driver:
-        driver.save_screenshot(f"reports/{node.name}.png")
+        try:
+            driver.save_screenshot(f"reports/{node.name}.png")
+        except Exception:
+            # Evita error si la ventana ya está cerrada
+            pass
