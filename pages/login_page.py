@@ -1,12 +1,12 @@
 from selenium.webdriver.common.by import By
-from .base_page import BasePage
+from pages.base_page import BasePage
 
 class LoginPage(BasePage):
-    USER = (By.ID, "user")
-    PASS = (By.ID, "password")
-    SUBMIT = (By.CSS_SELECTOR, "button[type=submit]")
+    USER = (By.ID, "username")
+    PASSWORD = (By.ID, "password")
+    LOGIN_BUTTON = (By.ID, "submit")
 
-    def login(self, user, pwd):
+    def login(self, user, password):
         self.type(self.USER, user)
-        self.type(self.PASS, pwd)
-        self.click(self.SUBMIT)
+        self.type(self.PASSWORD, password)
+        self.click(self.LOGIN_BUTTON)
